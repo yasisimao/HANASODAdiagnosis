@@ -1,501 +1,296 @@
 <!DOCTYPE html>
-
 <html lang="ja">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <title>はなそだキャラクター診断</title>
 
 <style>
-
 * {
-
-  box-sizing: border-box;
-
+  box-sizing: border-box;
 }
 
 :root {
-
-  --pink: #f2cbd7;
-
-  --pink-light: #fff4f7;
-
-  --green: #b9d8bd;
-
-  --brown: #665454;
-
-  --white: #fffdfb;
-
+  --pink: #f2cbd7;
+  --pink-light: #fff4f7;
+  --green: #b9d8bd;
+  --brown: #665454;
+  --white: #fffdfb;
 }
 
 body {
-
-  margin: 0;
-
-  padding: 24px 16px 40px;
-
-  min-height: 100vh;
-
-  font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN",
-
-               Meiryo, sans-serif;
-
-  color: var(--brown);
-
-  background:
-
-    radial-gradient(circle at 10% 10%, #fce4eb 0, transparent 30%),
-
-    radial-gradient(circle at 90% 80%, #e4f0df 0, transparent 30%),
-
-    #fffaf7;
-
+  margin: 0;
+  padding: 24px 16px 40px;
+  min-height: 100vh;
+  font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN",
+               Meiryo, sans-serif;
+  color: var(--brown);
+  background:
+    radial-gradient(circle at 10% 10%, #fce4eb 0, transparent 30%),
+    radial-gradient(circle at 90% 80%, #e4f0df 0, transparent 30%),
+    #fffaf7;
 }
 
 button {
-
-  font: inherit;
-
-  -webkit-tap-highlight-color: transparent;
-
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .container {
-
-  width: 100%;
-
-  max-width: 540px;
-
-  margin: 0 auto;
-
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
 }
 
 header {
-
-  text-align: center;
-
-  margin-bottom: 24px;
-
+  text-align: center;
+  margin-bottom: 24px;
 }
 
 .flower {
-
-  font-size: 30px;
-
-  margin-bottom: 8px;
-
+  font-size: 30px;
+  margin-bottom: 8px;
 }
 
 h1 {
-
-  margin: 0;
-
-  font-size: clamp(23px, 6vw, 30px);
-
-  line-height: 1.5;
-
-  letter-spacing: 0.04em;
-
+  margin: 0;
+  font-size: clamp(23px, 6vw, 30px);
+  line-height: 1.5;
+  letter-spacing: 0.04em;
 }
 
 .subtitle {
-
-  margin-top: 8px;
-
-  font-size: 13px;
-
-  letter-spacing: 0.08em;
-
-  color: #947e7e;
-
+  margin-top: 8px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: #947e7e;
 }
 
 .card {
-
-  padding: 24px 20px;
-
-  background: rgba(255, 253, 251, 0.96);
-
-  border: 1px solid #f0e2e2;
-
-  border-radius: 24px;
-
-  box-shadow: 0 8px 28px rgba(112, 80, 80, 0.07);
-
+  padding: 24px 20px;
+  background: rgba(255, 253, 251, 0.96);
+  border: 1px solid #f0e2e2;
+  border-radius: 24px;
+  box-shadow: 0 8px 28px rgba(112, 80, 80, 0.07);
 }
 
 .intro {
-
-  text-align: center;
-
+  text-align: center;
 }
 
 .intro p {
-
-  line-height: 1.9;
-
-  font-size: 14px;
-
+  line-height: 1.9;
+  font-size: 14px;
 }
 
 .small-note {
-
-  color: #947e7e;
-
-  font-size: 12px !important;
-
+  color: #947e7e;
+  font-size: 12px !important;
 }
 
 .primary-button {
-
-  display: block;
-
-  width: 100%;
-
-  margin-top: 24px;
-
-  padding: 15px;
-
-  color: #fff;
-
-  background: #c98fa2;
-
-  border: none;
-
-  border-radius: 999px;
-
-  font-weight: bold;
-
-  cursor: pointer;
-
-  transition: 0.2s;
-
+  display: block;
+  width: 100%;
+  margin-top: 24px;
+  padding: 15px;
+  color: #fff;
+  background: #c98fa2;
+  border: none;
+  border-radius: 999px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 .primary-button:hover {
-
-  background: #b97d91;
-
-  transform: translateY(-1px);
-
+  background: #b97d91;
+  transform: translateY(-1px);
 }
 
 .progress-area {
-
-  margin-bottom: 22px;
-
+  margin-bottom: 22px;
 }
 
 .progress-text {
-
-  display: flex;
-
-  justify-content: space-between;
-
-  font-size: 12px;
-
-  color: #947e7e;
-
-  margin-bottom: 8px;
-
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #947e7e;
+  margin-bottom: 8px;
 }
 
 .progress-track {
-
-  height: 7px;
-
-  background: #f2e7e7;
-
-  border-radius: 99px;
-
-  overflow: hidden;
-
+  height: 7px;
+  background: #f2e7e7;
+  border-radius: 99px;
+  overflow: hidden;
 }
 
 .progress-bar {
-
-  height: 100%;
-
-  width: 0%;
-
-  background: linear-gradient(90deg, #e9b6c7, #b8d4b6);
-
-  border-radius: 99px;
-
-  transition: width 0.3s;
-
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #e9b6c7, #b8d4b6);
+  border-radius: 99px;
+  transition: width 0.3s;
 }
 
 .question-number {
-
-  color: #bc8b9b;
-
-  font-size: 12px;
-
-  font-weight: bold;
-
-  letter-spacing: 0.12em;
-
+  color: #bc8b9b;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.12em;
 }
 
 h2 {
-
-  margin: 12px 0 22px;
-
-  font-size: 19px;
-
-  line-height: 1.7;
-
+  margin: 12px 0 22px;
+  font-size: 19px;
+  line-height: 1.7;
 }
 
 .options {
-
-  display: grid;
-
-  gap: 12px;
-
+  display: grid;
+  gap: 12px;
 }
 
 .option {
-
-  width: 100%;
-
-  padding: 16px;
-
-  text-align: left;
-
-  color: var(--brown);
-
-  background: #fff;
-
-  border: 1px solid #eadede;
-
-  border-radius: 15px;
-
-  cursor: pointer;
-
-  line-height: 1.8;
-
-  transition: background 0.18s, border-color 0.18s;
-
+  width: 100%;
+  padding: 16px;
+  text-align: left;
+  color: var(--brown);
+  background: #fff;
+  border: 1px solid #eadede;
+  border-radius: 15px;
+  cursor: pointer;
+  line-height: 1.8;
+  transition: background 0.18s, border-color 0.18s;
 }
 
 .option:hover {
-
-  background: var(--pink-light);
-
-  border-color: #d9a7b7;
-
+  background: var(--pink-light);
+  border-color: #d9a7b7;
 }
 
 .option:active {
-
-  background: #fff0f4;
-
+  background: #fff0f4;
 }
 
 .option.selected {
-
-  background: #fff0f4;
-
-  border: 2px solid #ce92a6;
-
-  padding: 15px;
-
+  background: #fff0f4;
+  border: 2px solid #ce92a6;
+  padding: 15px;
 }
 
 .option:disabled {
-
-  cursor: default;
-
-  opacity: 1;
-
+  cursor: default;
+  opacity: 1;
 }
 
 .option-label {
-
-  display: inline-block;
-
-  margin-right: 7px;
-
-  color: #bf8297;
-
-  font-weight: bold;
-
+  display: inline-block;
+  margin-right: 7px;
+  color: #bf8297;
+  font-weight: bold;
 }
 
 .navigation {
-
-  display: flex;
-
-  margin-top: 24px;
-
+  display: flex;
+  margin-top: 24px;
 }
 
 .navigation button {
-
-  width: 100%;
-
-  padding: 13px;
-
-  border-radius: 999px;
-
-  font-weight: bold;
-
-  cursor: pointer;
-
+  width: 100%;
+  padding: 13px;
+  border-radius: 999px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .back-button {
-
-  background: #fff;
-
-  border: 1px solid #e8dada;
-
-  color: #947e7e;
-
+  background: #fff;
+  border: 1px solid #e8dada;
+  color: #947e7e;
 }
 
 .back-button:disabled {
-
-  cursor: default;
-
+  cursor: default;
 }
 
 .result-label {
-
-  text-align: center;
-
-  font-size: 12px;
-
-  color: #b58394;
-
-  letter-spacing: 0.16em;
-
-  font-weight: bold;
-
+  text-align: center;
+  font-size: 12px;
+  color: #b58394;
+  letter-spacing: 0.16em;
+  font-weight: bold;
 }
 
 .result-flower {
-
-  text-align: center;
-
-  font-size: 30px;
-
-  margin: 12px 0;
-
+  text-align: center;
+  font-size: 30px;
+  margin: 12px 0;
 }
 
 .result-name {
-
-  text-align: center;
-
-  font-size: 28px;
-
-  margin: 0 0 8px;
-
+  text-align: center;
+  font-size: 28px;
+  margin: 0 0 8px;
 }
 
 .result-caption {
-
-  text-align: center;
-
-  color: #a17c87;
-
-  font-size: 13px;
-
-  margin-bottom: 24px;
-
+  text-align: center;
+  color: #a17c87;
+  font-size: 13px;
+  margin-bottom: 24px;
 }
 
 .result-description {
-
-  padding: 20px;
-
-  background: var(--pink-light);
-
-  border-radius: 18px;
-
-  line-height: 2;
-
-  font-size: 14px;
-
+  padding: 20px;
+  background: var(--pink-light);
+  border-radius: 18px;
+  line-height: 2;
+  font-size: 14px;
 }
 
 .result-message {
-
-  margin-top: 20px;
-
-  line-height: 2;
-
-  font-size: 14px;
-
+  margin-top: 20px;
+  line-height: 2;
+  font-size: 14px;
 }
 
 .result-footer {
-
-  text-align: center;
-
-  color: #a18c8c;
-
-  font-size: 11px;
-
-  margin-top: 22px;
-
-  line-height: 1.8;
-
+  text-align: center;
+  color: #a18c8c;
+  font-size: 11px;
+  margin-top: 22px;
+  line-height: 1.8;
 }
 
 .hidden {
-
-  display: none !important;
-
+  display: none !important;
 }
 
 footer {
-
-  text-align: center;
-
-  margin-top: 24px;
-
-  color: #b09b9b;
-
-  font-size: 11px;
-
-  letter-spacing: 0.05em;
-
+  text-align: center;
+  margin-top: 24px;
+  color: #b09b9b;
+  font-size: 11px;
+  letter-spacing: 0.05em;
 }
 
 @media (max-width: 380px) {
+  .card {
+    padding: 20px 16px;
+  }
 
-  .card {
+  h2 {
+    font-size: 17px;
+  }
 
-    padding: 20px 16px;
-
-  }
-
-  h2 {
-
-    font-size: 17px;
-
-  }
-
-  .option {
-
-    padding: 14px;
-
-    font-size: 13px;
-
-  }
-
+  .option {
+    padding: 14px;
+    font-size: 13px;
+  }
 }
-
 </style>
-
 </head>
 
 <body>
@@ -514,13 +309,20 @@ footer {
 
   <section id="quiz" class="card hidden">
     <div class="progress-area">
-      <div class="progress-text"><span>QUESTION</span><span id="progressText">1 / 10</span></div>
-      <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+      <div class="progress-text">
+        <span>QUESTION</span>
+        <span id="progressText">1 / 10</span>
+      </div>
+      <div class="progress-track">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
     </div>
     <div id="questionNumber" class="question-number">QUESTION 01</div>
     <h2 id="questionText"></h2>
     <div id="options" class="options"></div>
-    <div class="navigation"><button id="backButton" class="back-button" onclick="previousQuestion()">一つ戻る</button></div>
+    <div class="navigation">
+      <button id="backButton" class="back-button" onclick="previousQuestion()">一つ戻る</button>
+    </div>
   </section>
 
   <section id="result" class="card hidden">
@@ -533,137 +335,267 @@ footer {
     <button class="primary-button" onclick="restartQuiz()">もう一度診断する</button>
     <div class="result-footer">花咲く場所で希望を育てて</div>
   </section>
+
   <footer>HANASODA CHARACTER DIAGNOSIS</footer>
 </div>
 
 <script>
 const characters = {
   saki: {
-    name: '茅野咲希', mark: '✿', catch: '静かな優しさを持つ人',
+    name: '茅野咲希',
+    mark: '✿',
+    catch: '静かな優しさを持つ人',
     description: 'あなたは、大切な人を心から大事にするタイプ。気持ちを言葉にするのは少し苦手でも、行動で相手を守ったり、そばにいたりすることができます。自分の中で考えながら、誠実に向き合おうとするところがあなたの魅力です。',
     message: '誰かを大切にするのと同じくらい、自分の気持ちも大切にしてね。'
   },
+
   hina: {
-    name: '栗栖川妃梨', mark: '✿', catch: 'まっすぐな心を持つ人',
+    name: '栗栖川妃梨',
+    mark: '✿',
+    catch: 'まっすぐな心を持つ人',
     description: 'あなたは、自分の気持ちに素直で、大切な人とのつながりを大事にするタイプ。相手のために行動することを惜しまず、思い立ったら一歩踏み出せる強さも持っています。まっすぐな思いやりが、周りの人をあたためているはず。',
     message: 'あなたの素直な気持ちは、きっと誰かの心をあたためるよ。'
   },
+
   maya: {
-    name: '桜井麻耶', mark: '✿', catch: '人を明るくする人',
+    name: '桜井麻耶',
+    mark: '✿',
+    catch: '人を明るくする人',
     description: 'あなたは、親しみやすく行動力のあるタイプ。人と話したり、一緒に楽しいことをしたりするのが得意です。周りの人を自然と笑顔にできる一方で、誰かのために動ける頼もしさも持っています。',
     message: 'あなたらしい明るさを大切に。無理に元気でいなくても大丈夫だよ。'
   },
+
   misa: {
-    name: '杉山美咲', mark: '✿', catch: '相手に寄り添える人',
+    name: '杉山美咲',
+    mark: '✿',
+    catch: '相手に寄り添える人',
     description: 'あなたは、相手の気持ちを想像し、丁寧に向き合えるタイプ。すぐに答えを出そうとせず、相手の話を聞きながら一緒に考えることができます。細やかな気配りと、そっと寄り添える優しさがあなたの魅力です。',
     message: '誰かを支える優しさを、自分自身にも向けてあげてね。'
   },
+
   rui: {
-    name: '瑠依', mark: '✿', catch: '静かに考える人',
+    name: '瑠依',
+    mark: '✿',
+    catch: '静かに考える人',
     description: 'あなたは、物事を落ち着いて考え、自分なりに納得してから行動するタイプ。周りに流されず、いろいろな可能性を見比べられるのが強みです。静かに考える時間が、あなたらしい答えにつながっていきます。',
     message: 'すぐに答えが出なくても大丈夫。あなたなりの答えを見つけていこう。'
   },
+
   tsumugi: {
-    name: '紬', mark: '✿', catch: '一緒にいると楽しい人',
+    name: '紬',
+    mark: '✿',
+    catch: '一緒にいると楽しい人',
     description: 'あなたは、日常の中に楽しさや新しい発見を見つけるのが得意なタイプ。気になることに挑戦したり、周りの人と楽しい時間を共有したりすることで、毎日を彩っていきます。あなたの好奇心が、誰かの笑顔にもつながっているはず。',
     message: 'あなたが楽しいと思える時間を、これからも大切にしてね。'
   }
 };
 
 const questions = [
- {text:'大切な人が落ち込んでいたら、どうする？', answers:[
-  {text:'何があったのか聞いて、力になりたい。', character:'hina'},
-  {text:'無理に聞かず、そばにいてあげたい。', character:'saki'},
-  {text:'少しでも笑顔になれるようにしたい。', character:'maya'}]},
- {text:'初対面の人と接するときは？', answers:[
-  {text:'自分から話しかけて、距離を縮める。', character:'maya'},
-  {text:'相手の様子を見ながら、少しずつ仲良くなる。', character:'rui'},
-  {text:'相手が安心できるよう、穏やかに接する。', character:'misa'}]},
- {text:'好きな人ができたら？', answers:[
-  {text:'自分の気持ちを素直に伝えたい。', character:'hina'},
-  {text:'相手の気持ちを考えながら、慎重に距離を縮めたい。', character:'misa'},
-  {text:'言葉よりも、行動で大切にしたい。', character:'saki'}]},
- {text:'大切なものを守るためなら？', answers:[
-  {text:'自分にできることを考えて、行動する。', character:'saki'},
-  {text:'周りの人と協力しながら、解決策を探す。', character:'maya'},
-  {text:'状況をよく考えて、最善の方法を選ぶ。', character:'rui'}]},
- {text:'休日の過ごし方で好きなのは？', answers:[
-  {text:'気になる場所へ出かけて、新しい発見をする。', character:'tsumugi'},
-  {text:'気心の知れた人と、のんびり過ごす。', character:'misa'},
-  {text:'大切な人と一緒に、好きなことを楽しむ。', character:'hina'}]},
- {text:'友達と意見が食い違ったら？', answers:[
-  {text:'相手の考えを聞きながら、納得できる答えを探す。', character:'misa'},
-  {text:'自分の考えを伝えて、きちんと話し合う。', character:'tsumugi'},
-  {text:'いったん自分の中で考えを整理する。', character:'rui'}]},
- {text:'自分の悩みを抱えているときは？', answers:[
-  {text:'まずは自分の中で考えて、答えを探したい。', character:'rui'},
-  {text:'信頼できる人に話して、気持ちを整理したい。', character:'hina'},
-  {text:'誰かと話しながら、気分を切り替えたい。', character:'maya'}]},
- {text:'誰かに感謝を伝えるなら？', answers:[
-  {text:'言葉にして、きちんと伝えたい。', character:'misa'},
-  {text:'相手が喜ぶことをして、気持ちを伝えたい。', character:'saki'},
-  {text:'相手が笑顔になるような形で伝えたい。', character:'tsumugi'}]},
- {text:'周りの人から、どんな人だと思われたい？', answers:[
-  {text:'一緒にいると楽しくて、気を遣わなくていい人。', character:'tsumugi'},
-  {text:'困ったときに頼れて、安心できる人。', character:'saki'},
-  {text:'周りをよく見て、落ち着いて行動できる人。', character:'rui'}]},
- {text:'初めてのことに挑戦するときは？', answers:[
-  {text:'面白そうなら、まずやってみる！', character:'maya'},
-  {text:'自分にとって大切なら、思い切って踏み出す。', character:'hina'},
-  {text:'楽しみながら、自分のペースで挑戦する。', character:'tsumugi'}]}
+  {
+    text: '大切な人が落ち込んでいたら、どうする？',
+    answers: [
+      { text: '何があったのか聞いて、力になりたい。', character: 'hina' },
+      { text: '無理に聞かず、そばにいてあげたい。', character: 'saki' },
+      { text: '少しでも笑顔になれるようにしたい。', character: 'maya' }
+    ]
+  },
+
+  {
+    text: '初対面の人と接するときは？',
+    answers: [
+      { text: '自分から話しかけて、距離を縮める。', character: 'maya' },
+      { text: '相手の様子を見ながら、少しずつ仲良くなる。', character: 'rui' },
+      { text: '相手が安心できるよう、穏やかに接する。', character: 'misa' }
+    ]
+  },
+
+  {
+    text: '好きな人ができたら？',
+    answers: [
+      { text: '自分の気持ちを素直に伝えたい。', character: 'hina' },
+      { text: '相手の気持ちを考えながら、慎重に距離を縮めたい。', character: 'misa' },
+      { text: '言葉よりも、行動で大切にしたい。', character: 'saki' }
+    ]
+  },
+
+  {
+    text: '大切なものを守るためなら？',
+    answers: [
+      { text: '自分にできることを考えて、行動する。', character: 'saki' },
+      { text: '周りの人と協力しながら、解決策を探す。', character: 'maya' },
+      { text: '状況をよく考えて、最善の方法を選ぶ。', character: 'rui' }
+    ]
+  },
+
+  {
+    text: '休日の過ごし方で好きなのは？',
+    answers: [
+      { text: '気になる場所へ出かけて、新しい発見をする。', character: 'tsumugi' },
+      { text: '気心の知れた人と、のんびり過ごす。', character: 'misa' },
+      { text: '大切な人と一緒に、好きなことを楽しむ。', character: 'hina' }
+    ]
+  },
+
+  {
+    text: '友達と意見が食い違ったら？',
+    answers: [
+      { text: '相手の考えを聞きながら、納得できる答えを探す。', character: 'misa' },
+      { text: '自分の考えを伝えて、きちんと話し合う。', character: 'tsumugi' },
+      { text: 'いったん自分の中で考えを整理する。', character: 'rui' }
+    ]
+  },
+
+  {
+    text: '自分の悩みを抱えているときは？',
+    answers: [
+      { text: 'まずは自分の中で考えて、答えを探したい。', character: 'rui' },
+      { text: '信頼できる人に話して、気持ちを整理したい。', character: 'hina' },
+      { text: '誰かと話しながら、気分を切り替えたい。', character: 'maya' }
+    ]
+  },
+
+  {
+    text: '誰かに感謝を伝えるなら？',
+    answers: [
+      { text: '言葉にして、きちんと伝えたい。', character: 'misa' },
+      { text: '相手が喜ぶことをして、気持ちを伝えたい。', character: 'saki' },
+      { text: '相手が笑顔になるような形で伝えたい。', character: 'tsumugi' }
+    ]
+  },
+
+  {
+    text: '周りの人から、どんな人だと思われたい？',
+    answers: [
+      { text: '一緒にいると楽しくて、気を遣わなくていい人。', character: 'tsumugi' },
+      { text: '困ったときに頼れて、安心できる人。', character: 'saki' },
+      { text: '周りをよく見て、落ち着いて行動できる人。', character: 'rui' }
+    ]
+  },
+
+  {
+    text: '初めてのことに挑戦するときは？',
+    answers: [
+      { text: '面白そうなら、まずやってみる！', character: 'maya' },
+      { text: '自分にとって大切なら、思い切って踏み出す。', character: 'hina' },
+      { text: '楽しみながら、自分のペースで挑戦する。', character: 'tsumugi' }
+    ]
+  }
 ];
 
 // Q10の選択肢を含め、各キャラクターが5回ずつ登場するように調整
 // 上の10問は各キャラクター5回ずつになるよう集計して使用します。
+
 let currentQuestion = 0;
 let answers = [];
+
 const $ = id => document.getElementById(id);
-const intro = $('intro'), quiz = $('quiz'), result = $('result');
-const optionLabels = ['A','B','C'];
+
+const intro = $('intro');
+const quiz = $('quiz');
+const result = $('result');
+
+const optionLabels = ['A', 'B', 'C'];
+
 function showSection(section) {
   intro.classList.toggle('hidden', section !== 'intro');
   quiz.classList.toggle('hidden', section !== 'quiz');
   result.classList.toggle('hidden', section !== 'result');
 }
-function startQuiz() { currentQuestion = 0; answers = []; showSection('quiz'); renderQuestion(); window.scrollTo({top:0,behavior:'smooth'}); }
+
+function startQuiz() {
+  currentQuestion = 0;
+  answers = [];
+  showSection('quiz');
+  renderQuestion();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 function renderQuestion() {
   const q = questions[currentQuestion];
-  $('progressText').textContent = `${currentQuestion + 1} / ${questions.length}`;
-  $('progressBar').style.width = `${(currentQuestion + 1) / questions.length * 100}%`;
-  $('questionNumber').textContent = `QUESTION ${String(currentQuestion + 1).padStart(2,'0')}`;
+
+  $('progressText').textContent =
+    `${currentQuestion + 1} / ${questions.length}`;
+
+  $('progressBar').style.width =
+    `${(currentQuestion + 1) / questions.length * 100}%`;
+
+  $('questionNumber').textContent =
+    `QUESTION ${String(currentQuestion + 1).padStart(2, '0')}`;
+
   $('questionText').textContent = q.text;
   $('options').innerHTML = '';
-  q.answers.forEach((a,i) => {
+
+  q.answers.forEach((a, i) => {
     const button = document.createElement('button');
+
     button.className = 'option';
-    button.innerHTML = `<span class="option-label">${optionLabels[i]}</span> ${a.text}`;
+
+    button.innerHTML =
+      `<span class="option-label">${optionLabels[i]}</span> ${a.text}`;
+
     button.addEventListener('click', () => chooseAnswer(a.character));
+
     $('options').appendChild(button);
   });
+
   $('backButton').disabled = currentQuestion === 0;
 }
+
 function chooseAnswer(character) {
   answers[currentQuestion] = character;
-  if (currentQuestion < questions.length - 1) { currentQuestion++; renderQuestion(); }
-  else showResult();
-  window.scrollTo({top:0,behavior:'smooth'});
+
+  if (currentQuestion < questions.length - 1) {
+    currentQuestion++;
+    renderQuestion();
+  } else {
+    showResult();
+  }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-function previousQuestion() { if (currentQuestion > 0) { currentQuestion--; renderQuestion(); } }
+
+function previousQuestion() {
+  if (currentQuestion > 0) {
+    currentQuestion--;
+    renderQuestion();
+  }
+}
+
 function showResult() {
-  const scores = Object.fromEntries(Object.keys(characters).map(id => [id,0]));
+  const scores = Object.fromEntries(
+    Object.keys(characters).map(id => [id, 0])
+  );
+
   answers.forEach(id => scores[id]++);
+
   const max = Math.max(...Object.values(scores));
-  const winners = Object.keys(scores).filter(id => scores[id] === max);
-  const chosen = winners.length === 1 ? winners[0] : answers.slice().reverse().find(id => winners.includes(id));
+
+  const winners = Object.keys(scores).filter(
+    id => scores[id] === max
+  );
+
+  const chosen = winners.length === 1
+    ? winners[0]
+    : answers.slice().reverse().find(id => winners.includes(id));
+
   const c = characters[chosen];
+
   $('resultName').textContent = `${c.name}タイプ！`;
   $('resultCaption').textContent = c.catch;
   $('resultDescription').textContent = c.description;
   $('resultMessage').textContent = c.message;
+
   showSection('result');
-  window.scrollTo({top:0,behavior:'smooth'});
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-function restartQuiz() { currentQuestion = 0; answers = []; showSection('intro'); window.scrollTo({top:0,behavior:'smooth'}); }
+
+function restartQuiz() {
+  currentQuestion = 0;
+  answers = [];
+  showSection('intro');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 </script>
 </body>
 </html>
